@@ -1,0 +1,8 @@
+sneshrajdev_db_user
+
+1kMrIuw3qMmaL34a
+
+mongodb+srv://sneshrajdev_db_user:<db_password>@attendxcluster.uq4d34f.mongodb.net/?appName=AttendXCluster
+
+
+mongodb+srv://sneshrajdev_db_user:1kMrIuw3qMmaL34a@attendxcluster.uq4d34f.mongodb.net/?appName=AttendXCluster

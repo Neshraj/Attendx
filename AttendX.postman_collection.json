@@ -1,0 +1,93 @@
+{
+  "info": {
+    "name": "AttendX API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api" },
+    { "key": "sessionId", "value": "" },
+    { "key": "correctionId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login - Institution Admin",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@svpcet.edu\",\n  \"password\": \"Admin@123\"\n}" },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Login - Faculty",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"faculty@svpcet.edu\",\n  \"password\": \"Faculty@123\"\n}" },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Login - Student",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"student@svpcet.edu\",\n  \"password\": \"Student@123\"\n}" },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        {
+          "name": "Current user",
+          "request": { "method": "GET", "url": "{{baseUrl}}/auth/me" }
+        }
+      ]
+    },
+    {
+      "name": "Institution",
+      "item": [
+        { "name": "Profile", "request": { "method": "GET", "url": "{{baseUrl}}/institution/profile" } },
+        { "name": "Catalog", "request": { "method": "GET", "url": "{{baseUrl}}/institution/catalog" } },
+        { "name": "Students", "request": { "method": "GET", "url": "{{baseUrl}}/institution/students" } },
+        { "name": "Faculty", "request": { "method": "GET", "url": "{{baseUrl}}/institution/faculty" } }
+      ]
+    },
+    {
+      "name": "Attendance",
+      "item": [
+        { "name": "Faculty sessions", "request": { "method": "GET", "url": "{{baseUrl}}/attendance/sessions" } },
+        { "name": "Student records", "request": { "method": "GET", "url": "{{baseUrl}}/attendance/student/records" } },
+        { "name": "Corrections", "request": { "method": "GET", "url": "{{baseUrl}}/attendance/corrections" } },
+        {
+          "name": "Create attendance session",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"sectionId\": \"SECTION_ID\",\n  \"subjectId\": \"SUBJECT_ID\",\n  \"date\": \"2026-09-24\",\n  \"startTime\": \"10:00\",\n  \"topic\": \"React hooks\",\n  \"records\": [\n    { \"studentId\": \"STUDENT_ID\", \"status\": \"PRESENT\" }\n  ]\n}" },
+            "url": "{{baseUrl}}/attendance/sessions"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        { "name": "Low attendance", "request": { "method": "GET", "url": "{{baseUrl}}/reports/low-attendance" } },
+        { "name": "Audit", "request": { "method": "GET", "url": "{{baseUrl}}/reports/audit" } }
+      ]
+    },
+    {
+      "name": "Platform",
+      "item": [
+        { "name": "Overview", "request": { "method": "GET", "url": "{{baseUrl}}/platform/overview" } },
+        { "name": "Institutions", "request": { "method": "GET", "url": "{{baseUrl}}/platform/institutions" } }
+      ]
+    }
+  ]
+}
